@@ -1,0 +1,452 @@
+app:
+  description: MacOS Agent, achieve user's goal using applescript.
+  icon: "\U0001F916"
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: MacOS Agent
+workflow:
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: llm-source-1720603933600-target
+      source: llm
+      sourceHandle: source
+      target: '1720603933600'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: http-request
+      id: 1720603933600-source-1720603954849-target
+      source: '1720603933600'
+      sourceHandle: source
+      target: '1720603954849'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: llm
+      id: 1720603968110-source-llm-target
+      source: '1720603968110'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1720604011717-source-answer-target
+      source: '1720604011717'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: code
+      id: 1720603854640-source-1720604039714-target
+      source: '1720603854640'
+      sourceHandle: source
+      target: '1720604039714'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: http-request
+      id: 1720604039714-source-1720603968110-target
+      source: '1720604039714'
+      sourceHandle: source
+      target: '1720603968110'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: if-else
+      id: 1720603954849-source-1720701168680-target
+      source: '1720603954849'
+      sourceHandle: source
+      target: '1720701168680'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1720701168680-true-1720604011717-target
+      source: '1720701168680'
+      sourceHandle: 'true'
+      target: '1720604011717'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1720701168680-false-1720701198958-target
+      source: '1720701168680'
+      sourceHandle: 'false'
+      target: '1720701198958'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 54
+      id: '1720603854640'
+      position:
+        x: 30
+        y: 282
+      positionAbsolute:
+        x: 30
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Retrieve the script from the LLM.
+        memory:
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-chat
+          provider: deepseek
+        prompt_template:
+        - id: 0c599526-2f75-4238-a182-c5824184e45f
+          role: system
+          text: '{{#1720603968110.body#}}'
+        selected: false
+        title: LLM:get_script
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 128
+      id: llm
+      position:
+        x: 942
+        y: 282
+      positionAbsolute:
+        x: 942
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1720604011717.text#}}'
+        desc: ''
+        selected: false
+        title: Answer:with_execution
+        type: answer
+        variables: []
+      height: 107
+      id: answer
+      position:
+        x: 2462
+        y: 282
+      positionAbsolute:
+        x: 2462
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(llm_output: str, user_input: str) -> dict:\n\
+          \    # Ensure the llm_output is properly formatted for JSON\n    llm_output_formatted\
+          \ = json.dumps(llm_output)\n    user_input_formatted = json.dumps(user_input)\n\
+          \    return {\n        \"llm_output_formatted\": llm_output_formatted,\n\
+          \        \"user_input_formatted\": user_input_formatted, \n    }"
+        code_language: python3
+        desc: Format variables as JSON values.
+        outputs:
+          llm_output_formatted:
+            children: null
+            type: string
+          user_input_formatted:
+            children: null
+            type: string
+        selected: false
+        title: Code:format_params
+        type: code
+        variables:
+        - value_selector:
+          - llm
+          - text
+          variable: llm_output
+        - value_selector:
+          - sys
+          - query
+          variable: user_input
+      height: 84
+      id: '1720603933600'
+      position:
+        x: 1246
+        y: 282
+      positionAbsolute:
+        x: 1246
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: "{\n    \"point\": \"execute_script\",\n    \"params\": {\n      \
+            \  \"user_id\": \"{{#sys.user_id#}}\",\n        \"inputs\": {\n      \
+            \      \"user_input\": {{#1720603933600.user_input_formatted#}},\n\n \
+            \           \"llm_output\": {{#1720603933600.llm_output_formatted#}},\n\
+            \             \"script_timeout\": {{#1720604039714.script_timeout#}}\n\
+            \        }\n    }\n}"
+          type: json
+        desc: Send the LLM output to the Agent for execution.
+        headers: Authorization:Bearer {{#1720604039714.agent_api_key#}}
+        method: post
+        params: ''
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: Agent:execute_script
+        type: http-request
+        url: '{{#1720604039714.agent_api_endpoint#}}'
+        variables: []
+      height: 141
+      id: '1720603954849'
+      position:
+        x: 1550
+        y: 282
+      positionAbsolute:
+        x: 1550
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: "{\n    \"point\": \"get_llm_system_prompt\",\n    \"params\": {\n\
+            \        \"user_id\": \"{{#sys.user_id#}}\"\n    }\n}"
+          type: json
+        desc: Retrieve the LLM system prompt from the macOS Agent server.
+        headers: Authorization:Bearer {{#1720604039714.agent_api_key#}}
+        method: post
+        params: ''
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: Agent:get_llm_system_prompt
+        type: http-request
+        url: '{{#1720604039714.agent_api_endpoint#}}'
+        variables: []
+      height: 141
+      id: '1720603968110'
+      position:
+        x: 638
+        y: 282
+      positionAbsolute:
+        x: 638
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: Use reply_prompt that includes "execution" as the system prompt for
+          the LLM to respond to user input.
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-chat
+          provider: deepseek
+        prompt_template:
+        - id: 60cbca91-199d-4764-90d9-2851ab63c9ae
+          role: system
+          text: '{{#1720603954849.body#}}'
+        selected: false
+        title: LLM:reply
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 164
+      id: '1720604011717'
+      position:
+        x: 2158
+        y: 282
+      positionAbsolute:
+        x: 2158
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\ndef main() -> dict:\n    config = {\n        \"agent_api_endpoint\"\
+          : \"http://host.docker.internal:8088\",\n        \"agent_api_key\": \"a-secret-key\"\
+          ,\n        \"script_timeout\": 60\n    }\n    return {\n        \"agent_api_endpoint\"\
+          : config[\"agent_api_endpoint\"],\n        \"agent_api_key\": config[\"\
+          agent_api_key\"],\n        \"script_timeout\": config[\"script_timeout\"\
+          ],\n    }\n"
+        code_language: python3
+        desc: Configuration for macOS Agent Server.
+        outputs:
+          agent_api_endpoint:
+            children: null
+            type: string
+          agent_api_key:
+            children: null
+            type: string
+          script_timeout:
+            children: null
+            type: number
+        selected: true
+        title: Code:config
+        type: code
+        variables: []
+      height: 102
+      id: '1720604039714'
+      position:
+        x: 334
+        y: 282
+      positionAbsolute:
+        x: 334
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        conditions:
+        - comparison_operator: not empty
+          id: '1720701184521'
+          value: ''
+          variable_selector:
+          - '1720603954849'
+          - body
+        desc: if any script execution result
+        logical_operator: and
+        selected: false
+        title: IF:script_execution
+        type: if-else
+      height: 156
+      id: '1720701168680'
+      position:
+        x: 1854
+        y: 282
+      positionAbsolute:
+        x: 1854
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#llm.text#}}'
+        desc: no script execution
+        selected: false
+        title: Answer:without_execution
+        type: answer
+        variables: []
+      height: 137
+      id: '1720701198958'
+      position:
+        x: 2158
+        y: 486
+      positionAbsolute:
+        x: 2158
+        y: 486
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 58.32490827558104
+      y: 176.2416089142547
+      zoom: 0.5618969968745753
