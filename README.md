@@ -204,7 +204,7 @@ Click "Publish" and then "Update" to make the chatbot live.
 
 After publishing, click [Run App] to open the Chatbot web view, input your goals, and refer to the "Use Cases" section for guidance.
 
-Recommended to run `Embed on website`, so that you can activate the Agent on any page.
+Recommended to run `Embed on website` and install [Dify Chatbot Chrome Extension](https://chrome.google.com/webstore/detail/dify-chatbot/ceehdapohffmjmkdcifjofadiaoeggaf), so that you can activate the Agent on any page.
 
 ![demo-5](screenshots/demo-5.png)
 
