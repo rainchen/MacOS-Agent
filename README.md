@@ -95,18 +95,19 @@ Here are some use cases I tried:
 
 ## Demo Video
 
+- macos-agent-brief-demo
 
-macos-agent-brief-demo
-<video src="videos/exported/macos-agent-brief-demo-20240716.mp4"></video>
-
-
-macos-agent-file-management-demo
-<video src="videos/exported/macos-agent-file-management-demo-20240716.mp4"></video>
+https://github.com/user-attachments/assets/d4a2a911-db7f-435b-9f8f-3e72eada9cd3
 
 
-macos-agent-code-playground-demo
-<video src="videos/exported/macos-agent-code-playground-demo-20240716.mp4"></video>
+- macos-agent-file-management-demo
 
+https://github.com/user-attachments/assets/b707c65f-4f95-4bfa-8a12-63ce66265b00
+
+
+- macos-agent-code-playground-demo
+
+https://github.com/user-attachments/assets/35d8695f-f24b-4846-8711-d8befee1a437
 
 
 ## How It Works
