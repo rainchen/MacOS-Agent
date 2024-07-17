@@ -40,6 +40,7 @@ Here are some use cases I tried:
   - copy them to a new dir named "10-days-old" in that dir
 - list files older than 10 days in ~/Desktop
   - create an Excel file contains the file name and create time
+- check ~/Desktop/macos-agent-playground.html and explain what it does
 
 ### Create utility tool
 
@@ -75,6 +76,13 @@ Here are some use cases I tried:
 
 - ask Siri for what is the weather like tomorrow
 - ask Siri for what ...
+
+### Math calculation
+
+* 9.11 and 9.9——which is bigger?
+  run code to compute the result
+* If a banana weighs 0.5 pounds, I have 7 pounds of bananas and 9 oranges, how many fruits do I have in total?
+  run code to compute the result
 
 ###  Acts as Code playground
 

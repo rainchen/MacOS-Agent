@@ -195,7 +195,8 @@ If the value of the <returncode></returncode> tag is 1, that means the script wa
 
     def extract_scripts(self, llm_output):
         # Extract all code block content from the llm_output
-        return re.findall(r"```applescript(.*?)```", llm_output, re.DOTALL)
+        scripts = re.findall(r"```applescript(.*?)```", llm_output, re.DOTALL)
+        return list(set(scripts))  # remove duplicate scripts
 
     def extract_user_goal(self, llm_output):
         match = re.search(r"<user_goal>(.*?)</user_goal>", llm_output, re.DOTALL)
