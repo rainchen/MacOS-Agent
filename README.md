@@ -101,6 +101,10 @@ Here are some use cases I tried:
 
 ![demo-3](screenshots/demo-3.png)
 
+### Create a diagram
+
+- I need to create a flowchart like `Start -> Process A -> Condition -> Process B -> End`, flow direction is from up to down. Help me create this diagram in a format that can be opened in Draw.io and open it with draw.io.app
+
 ## Demo Video
 
 - macos-agent-brief-demo
@@ -116,6 +120,11 @@ https://github.com/user-attachments/assets/b707c65f-4f95-4bfa-8a12-63ce66265b00
 - macos-agent-code-playground-demo
 
 https://github.com/user-attachments/assets/35d8695f-f24b-4846-8711-d8befee1a437
+
+
+- macos-agent-create-diagram-demo
+
+https://github.com/user-attachments/assets/93594d87-c90f-4b47-8025-6d6fa5ecb9d6
 
 
 ## How It Works
