@@ -109,22 +109,22 @@ Here are some use cases I tried:
 
 - macos-agent-brief-demo
 
-https://github.com/user-attachments/assets/d4a2a911-db7f-435b-9f8f-3e72eada9cd3
+https://github.com/user-attachments/assets/d26559d2-e5ab-4cc8-8b2e-1cbcc17dc016
 
 
 - macos-agent-file-management-demo
 
-https://github.com/user-attachments/assets/b707c65f-4f95-4bfa-8a12-63ce66265b00
+https://github.com/user-attachments/assets/3c4c92a9-088b-4d52-a689-55dfd8c76dff
 
 
 - macos-agent-code-playground-demo
 
-https://github.com/user-attachments/assets/35d8695f-f24b-4846-8711-d8befee1a437
+https://github.com/user-attachments/assets/e862914b-556d-4cc8-876a-a34c58d46463
 
 
 - macos-agent-create-diagram-demo
 
-https://github.com/user-attachments/assets/93594d87-c90f-4b47-8025-6d6fa5ecb9d6
+https://github.com/user-attachments/assets/dd89b4e3-b9d6-46a7-9778-7afcac1f06ac
 
 
 ## How It Works
